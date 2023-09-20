@@ -37,13 +37,13 @@ const Header = ({ t }: any) => {
     };
     return (
       <>
-        <CustomNavLinkSmall onClick={() => scrollTo("about")}>
+        <CustomNavLinkSmall onClick={() => scrollTo("step1")}>
           <Span>{t("Conectar Dispositivo")}</Span>
         </CustomNavLinkSmall>
-        <CustomNavLinkSmall onClick={() => scrollTo("mission")}>
+        <CustomNavLinkSmall onClick={() => scrollTo("dashboard")}>
           <Span>{t("Dashboard")}</Span>
         </CustomNavLinkSmall>
-        <CustomNavLinkSmall onClick={() => scrollTo("product")}>
+        <CustomNavLinkSmall onClick={() => scrollTo("chat")}>
           <Span>{t("Doctor Chat AI")}</Span>
         </CustomNavLinkSmall>
         <CustomNavLinkSmall
@@ -51,7 +51,7 @@ const Header = ({ t }: any) => {
           onClick={() => scrollTo("contact")}
         >
           <Span>
-            <Button>{t("Contact")}</Button>
+            <Button>{t("Contactar")}</Button>
           </Span>
         </CustomNavLinkSmall>
       </>

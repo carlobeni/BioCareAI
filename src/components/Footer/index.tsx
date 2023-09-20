@@ -27,9 +27,6 @@ interface SocialLinkProps {
 }
 
 const Footer = ({ t }: any) => {
-  const handleChange = (language: string) => {
-    i18n.changeLanguage(language);
-  };
 
   const SocialLink = ({ href, src }: SocialLinkProps) => {
     return (
@@ -51,77 +48,14 @@ const Footer = ({ t }: any) => {
         <Container>
           <Row justify="space-between">
             <Col lg={10} md={10} sm={12} xs={12}>
-              <Language>{t("Contact")}</Language>
-              <Large to="/">{t("Tell us everything")}</Large>
+              <Language>Contacto</Language>
+              <Large to="/">{t("Cuentanos todo")}</Large>
               <Para>
-                {t(`Do you have any question? Feel free to reach out.`)}
+                {t(`Estamos felices de recibir feedbacks.`)}
               </Para>
-              <a href="mailto:l.qqbadze@gmail.com">
+              <a href="mailto:carlosbenitez.dev.acct@gmail.com">
                 <Chat>{t(`Let's Chat`)}</Chat>
               </a>
-            </Col>
-            <Col lg={8} md={8} sm={12} xs={12}>
-              <Title>{t("Policy")}</Title>
-              <Large to="/" left="true">
-                {t("Application Security")}
-              </Large>
-              <Large left="true" to="/">
-                {t("Software Principles")}
-              </Large>
-            </Col>
-            <Col lg={6} md={6} sm={12} xs={12}>
-              <Empty />
-              <Large left="true" to="/">
-                {t("Support Center")}
-              </Large>
-              <Large left="true" to="/">
-                {t("Customer Support")}
-              </Large>
-            </Col>
-          </Row>
-          <Row justify="space-between">
-            <Col lg={10} md={10} sm={12} xs={12}>
-              <Empty />
-              <Language>{t("Address")}</Language>
-              <Para>Rancho Santa Margarita</Para>
-              <Para>2131 Elk Street</Para>
-              <Para>California</Para>
-            </Col>
-            <Col lg={8} md={8} sm={12} xs={12}>
-              <Title>{t("Company")}</Title>
-              <Large left="true" to="/">
-                {t("About")}
-              </Large>
-              <Large left="true" to="/">
-                {t("Blog")}
-              </Large>
-              <Large left="true" to="/">
-                {t("Press")}
-              </Large>
-              <Large left="true" to="/">
-                {t("Careers & Culture")}
-              </Large>
-            </Col>
-            <Col lg={6} md={6} sm={12} xs={12}>
-              <Label htmlFor="select-lang">{t("Language")}</Label>
-              <LanguageSwitchContainer>
-                <LanguageSwitch onClick={() => handleChange("en")}>
-                  <SvgIcon
-                    src="united-states.svg"
-                    aria-label="homepage"
-                    width="30px"
-                    height="30px"
-                  />
-                </LanguageSwitch>
-                <LanguageSwitch onClick={() => handleChange("es")}>
-                  <SvgIcon
-                    src="spain.svg"
-                    aria-label="homepage"
-                    width="30px"
-                    height="30px"
-                  />
-                </LanguageSwitch>
-              </LanguageSwitchContainer>
             </Col>
           </Row>
         </Container>
@@ -145,27 +79,9 @@ const Footer = ({ t }: any) => {
             </NavLink>
             <FooterContainer>
               <SocialLink
-                href="https://github.com/Adrinlol/create-react-app-adrinlol"
+                href="https://github.com/carlobeni?tab=repositories"
                 src="github.svg"
               />
-              <SocialLink
-                href="https://twitter.com/Adrinlolx"
-                src="twitter.svg"
-              />
-              <SocialLink
-                href="https://www.linkedin.com/in/lasha-kakabadze/"
-                src="linkedin.svg"
-              />
-              <SocialLink
-                href="https://medium.com/@lashakakabadze/"
-                src="medium.svg"
-              />
-              <a href="https://www.buymeacoffee.com/adrinlol">
-                <img
-                  src="https://img.buymeacoffee.com/button-api/?text=Buy me a pizza&emoji=🍕&slug=adrinlol&button_colour=FF5F5F&font_colour=ffffff&font_family=Lato&outline_colour=000000&coffee_colour=FFDD00"
-                  alt="Buy me a pizza"
-                />
-              </a>
             </FooterContainer>
           </Row>
         </Container>

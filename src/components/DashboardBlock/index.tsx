@@ -2,16 +2,17 @@ import { Row, Col } from "antd";
 import { withTranslation } from "react-i18next";
 import { Slide } from "react-awesome-reveal";
 import { Button } from "../../common/Button";
-import { IntroBlockSection, Content, ContentWrapper } from "./styles";
+import { DashboardBlockSection, Content, ContentWrapper } from "./styles";
 
-interface IntroBlockProps {
+interface DashboardBlockProps {
   title: string;
   content: string;
   button: string;
+  id: string;
   t: any;
 }
 
-const IntroBlock = ({ title, content, button, t }: IntroBlockProps) => {
+const DashboardBlock = ({ title, content, button, id,t, }: DashboardBlockProps) => {
   const scrollTo = (id: string) => {
     const element = document.getElementById(id) as HTMLDivElement;
     element.scrollIntoView({
@@ -19,7 +20,7 @@ const IntroBlock = ({ title, content, button, t }: IntroBlockProps) => {
     });
   };
   return (
-    <IntroBlockSection>
+    <DashboardBlockSection id={id}>
       <Slide direction="up">
         <Row justify="center" align="middle">
           <ContentWrapper>
@@ -27,7 +28,7 @@ const IntroBlock = ({ title, content, button, t }: IntroBlockProps) => {
               <h6>{t(title)}</h6>
               <Content>{t(content)}</Content>
               {button && (
-                <Button name="submit" onClick={() => scrollTo("step1")}>
+                <Button name="submit" onClick={() => scrollTo("mission")}>
                   {t(button)}
                 </Button>
               )}
@@ -35,8 +36,8 @@ const IntroBlock = ({ title, content, button, t }: IntroBlockProps) => {
           </ContentWrapper>
         </Row>
       </Slide>
-    </IntroBlockSection>
+    </DashboardBlockSection>
   );
 };
 
-export default withTranslation()(IntroBlock);
+export default withTranslation()(DashboardBlock);

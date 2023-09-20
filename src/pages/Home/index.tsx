@@ -1,55 +1,53 @@
 import { lazy } from "react";
 import IntroContent from "../../content/IntroContent.json";
-import MiddleBlockContent from "../../content/MiddleBlockContent.json";
-import AboutContent from "../../content/AboutContent.json";
-import MissionContent from "../../content/MissionContent.json";
-import ProductContent from "../../content/ProductContent.json";
+import DeviceStep1Content from "../../content/DeviceStep1Content.json";
+import DeviceStep2Content from "../../content/DeviceStep2Content.json";
+import DeviceStep3Content from "../../content/DeviceStep3Content.json";
+import ChatContent from "../../content/ChatContent.json";
 import ContactContent from "../../content/ContactContent.json";
 
+const IntroBlock = lazy(() => import("../../components/IntroBlock"));
+const ContentBlock = lazy(() => import("../../components/ContentBlock"));
+const ChatBlock = lazy(() => import("../../components/ChatBlock"));
 const Contact = lazy(() => import("../../components/ContactForm"));
-const MiddleBlock = lazy(() => import("../../components/MiddleBlock"));
+
 const Container = lazy(() => import("../../common/Container"));
 const ScrollToTop = lazy(() => import("../../common/ScrollToTop"));
-const ContentBlock = lazy(() => import("../../components/ContentBlock"));
 
 const Home = () => {
   return (
     <Container>
       <ScrollToTop />
-      <ContentBlock
-        type="right"
+      <IntroBlock
         title={IntroContent.title}
         content={IntroContent.text}
         button={IntroContent.button}
-        icon="developer.svg"
-        id="intro"
-      />
-      <MiddleBlock
-        title={MiddleBlockContent.title}
-        content={MiddleBlockContent.text}
-        button={MiddleBlockContent.button}
-      />
-      <ContentBlock
-        type="left"
-        title={AboutContent.title}
-        content={AboutContent.text}
-        section={AboutContent.section}
-        icon="graphs.svg"
-        id="about"
       />
       <ContentBlock
         type="right"
-        title={MissionContent.title}
-        content={MissionContent.text}
+        title={DeviceStep1Content.title}
+        content={DeviceStep1Content.text}
         icon="product-launch.svg"
         id="mission"
       />
       <ContentBlock
         type="left"
-        title={ProductContent.title}
-        content={ProductContent.text}
-        icon="waving.svg"
-        id="product"
+        title={DeviceStep2Content.title}
+        content={DeviceStep2Content.text}
+        icon="product-launch.svg"
+        id="mission"
+      />
+      <ContentBlock
+        type="right"
+        title={DeviceStep2Content.title}
+        content={DeviceStep2Content.text}
+        icon="product-launch.svg"
+        id="mission"
+      />
+      <ChatBlock
+        title={ChatContent .title}
+        content={ChatContent .text}
+        button={IntroContent.button}
       />
       <Contact
         title={ContactContent.title}

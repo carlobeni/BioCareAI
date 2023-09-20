@@ -2,16 +2,16 @@ import { Row, Col } from "antd";
 import { withTranslation } from "react-i18next";
 import { Slide } from "react-awesome-reveal";
 import { Button } from "../../common/Button";
-import { MiddleBlockSection, Content, ContentWrapper } from "./styles";
+import { IntroBlockSection, Content, ContentWrapper } from "./styles";
 
-interface MiddleBlockProps {
+interface IntroBlockProps {
   title: string;
   content: string;
   button: string;
   t: any;
 }
 
-const MiddleBlock = ({ title, content, button, t }: MiddleBlockProps) => {
+const IntroBlock = ({ title, content, button, t }: IntroBlockProps) => {
   const scrollTo = (id: string) => {
     const element = document.getElementById(id) as HTMLDivElement;
     element.scrollIntoView({
@@ -19,7 +19,7 @@ const MiddleBlock = ({ title, content, button, t }: MiddleBlockProps) => {
     });
   };
   return (
-    <MiddleBlockSection>
+    <IntroBlockSection>
       <Slide direction="up">
         <Row justify="center" align="middle">
           <ContentWrapper>
@@ -35,8 +35,8 @@ const MiddleBlock = ({ title, content, button, t }: MiddleBlockProps) => {
           </ContentWrapper>
         </Row>
       </Slide>
-    </MiddleBlockSection>
+    </IntroBlockSection>
   );
 };
 
-export default withTranslation()(MiddleBlock);
+export default withTranslation()(IntroBlock);

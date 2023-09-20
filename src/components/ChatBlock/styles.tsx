@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MiddleBlockSection = styled("section")`
+export const ChatBlockSection = styled("section")`
   position: relative;
   padding: 7.5rem 0 3rem;
   text-align: center;

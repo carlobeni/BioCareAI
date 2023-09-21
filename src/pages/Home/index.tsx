@@ -5,13 +5,11 @@ import DeviceStep2Content from "../../content/DeviceStep2Content.json";
 import DeviceStep3Content from "../../content/DeviceStep3Content.json";
 import DashboardContent from "../../content/DashboardContent.json";
 import ChatContent from "../../content/ChatContent.json";
-import ContactContent from "../../content/ContactContent.json";
 
 const IntroBlock = lazy(() => import("../../components/IntroBlock"));
 const ContentBlock = lazy(() => import("../../components/ContentBlock"));
 const ChatBlock = lazy(() => import("../../components/ChatBlock"));
 const DashboardBlock = lazy(() => import("../../components/DashboardBlock"));
-const Contact = lazy(() => import("../../components/ContactForm"));
 
 const Container = lazy(() => import("../../common/Container"));
 const ScrollToTop = lazy(() => import("../../common/ScrollToTop"));
@@ -55,13 +53,7 @@ const Home = () => {
       <ChatBlock
         title={ChatContent.title}
         content={ChatContent.text}
-        button={ChatContent.button}
         id="chat"
-      />
-      <Contact
-        title={ContactContent.title}
-        content={ContactContent.text}
-        id="contact"
       />
     </Container>
   );

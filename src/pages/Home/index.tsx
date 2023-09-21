@@ -47,7 +47,6 @@ const Home = () => {
       <DashboardBlock
         title={DashboardContent.title}
         content={DashboardContent.text}
-        button={DashboardContent.button}
         id="dashboard"
       />
       <ChatBlock

@@ -8,10 +8,11 @@ interface IntroBlockProps {
   title: string;
   content: string;
   button: string;
+  id: string;
   t: any;
 }
 
-const IntroBlock = ({ title, content, button, t }: IntroBlockProps) => {
+const IntroBlock = ({ title, content, button,id, t, }: IntroBlockProps) => {
   const scrollTo = (id: string) => {
     const element = document.getElementById(id) as HTMLDivElement;
     element.scrollIntoView({
@@ -19,7 +20,7 @@ const IntroBlock = ({ title, content, button, t }: IntroBlockProps) => {
     });
   };
   return (
-    <IntroBlockSection>
+    <IntroBlockSection id={id}>
       <Slide direction="up">
         <Row justify="center" align="middle">
           <ContentWrapper>

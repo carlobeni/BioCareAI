@@ -13,7 +13,9 @@ const systemPrompt =
   "3-Tus respuestas deben ser breves pero claras (máximo 30 palabras)" +
   "4-Trata al usuario con amabilidad y calidez" +
   "5-Tienes completamente prohibido hablar de temas que no son medicina (esto es lo más importante de las reglas)" +
-  "6-Nunca hagas recomendaciones como 'Acuda a un médico' o similares";
+  "6-Nunca hagas recomendaciones como 'Acuda a un médico' o similares"+
+  "7- Si te preguntan sobre algun tema wur no sea sobre medicina o salud, responde: Lo siento, no tengo esa informacion"+
+  "";
 
 const initChat: Message[] = [
   { role: "system", content: systemPrompt },

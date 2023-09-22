@@ -22,6 +22,7 @@ const Home = () => {
         title={IntroContent.title}
         content={IntroContent.text}
         button={IntroContent.button}
+        id="intro"
       />
       <ContentBlock
         type="right"

@@ -5,6 +5,8 @@ import DeviceStep2Content from "../../content/DeviceStep2Content.json";
 import DeviceStep3Content from "../../content/DeviceStep3Content.json";
 import DashboardContent from "../../content/DashboardContent.json";
 import ChatContent from "../../content/ChatContent.json";
+import { useAuth } from "../../context/authContext";
+import RealtimeData from "./RealtimeData";
 
 const IntroBlock = lazy(() => import("../../components/IntroBlock"));
 const ContentBlock = lazy(() => import("../../components/ContentBlock"));
@@ -14,9 +16,29 @@ const DashboardBlock = lazy(() => import("../../components/DashboardBlock"));
 const Container = lazy(() => import("../../common/Container"));
 const ScrollToTop = lazy(() => import("../../common/ScrollToTop"));
 
+
 const Home = () => {
+  const { user, logOut, isLoading } = useAuth()
+  const handleLogOut = async () => {
+    try {
+      //throw new Error("test log out error")
+      await logOut()
+    } catch (error:any) {
+      console.log(error.message)
+    }
+  }
+  if (isLoading) return <h1>Loading...</h1>
+
   return (
     <Container>
+      <div>
+        Hi {user.displayName || user.email}!
+        <RealtimeData />
+        <button onClick={handleLogOut}>
+          Log Out
+        </button>
+      </div>
+
       <ScrollToTop />
       <IntroBlock
         title={IntroContent.title}

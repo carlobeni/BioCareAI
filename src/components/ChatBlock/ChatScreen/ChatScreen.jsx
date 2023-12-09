@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { withTranslation } from "react-i18next";
 import { useDialogChat } from '../../../hooks/useDialogChat';
-import { FaCopy, FaTrash } from 'react-icons/fa';
+import { FaCopy } from 'react-icons/fa';
 import { MdSend } from 'react-icons/md';
 import { Slide } from 'react-awesome-reveal';
 import { Button, Checkbox } from 'antd';
+import useFirebaseData from '../../../hooks/useFirebaseData';
 
 import {
   ScreenContainer,
@@ -19,17 +20,21 @@ import {
 
 const ChatScreen = () => {
   const [userText, setUserText] = useState("");
+  const [showError, setShowError] = useState(false);
   const { messageFlow, request, isLoading, isError, errorMessage, reset } = useDialogChat();
+  const { fbData } = useFirebaseData();
 
-  const handleCopyResponse = (responseText: string) => {
+  const [checked, setChecked] = useState(false);
+
+  const handleCopyResponse = (responseText) => {
     navigator.clipboard.writeText(responseText);
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleInputChange = (e) => {
     setUserText(e.target.value);
   };
 
-  const handleInputKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+  const handleInputKeyDown = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       addUserMessage();
@@ -46,18 +51,27 @@ const ChatScreen = () => {
   };
 
   const sendQuestion = async () => {
+    let userMessage = userText
+    if (checked) {
+      if (Object.keys(fbData).length === 0) {
+        setShowError(true);
+        setTimeout(() => {
+          setShowError(false);
+        }, 3000);
+      } else userMessage = `<< Mis biodatos son 📊 BPM: ${fbData.bpm} / SpO2: ${fbData.spo2} / Temperatura: ${fbData.temperature} 📊 >>. ${userText}`
+    }
     try {
-      await request(userText);
+      await request(userMessage);
     } catch (error) {
-      //console.log(error.message);
+      setShowError(true);
+      setTimeout(() => {
+        setShowError(false);
+      }, 3000);
     }
   };
 
-  const handleDeleteChats = () => {
-    if (window.confirm("Are you sure you want to delete all the chats?")) {
-      localStorage.removeItem("all-chats");
-      reset();
-    }
+  const handleCheckboxChange = (e) => {
+    setChecked(e.target.checked);
   };
 
   return (
@@ -65,13 +79,13 @@ const ChatScreen = () => {
       <ChatContainer>
         {messageFlow.slice(1).map((dialog, index) => {
           if (dialog.role === "user") return (
-            <Slide direction='left'>
+            <Slide direction='left' key={index}>
               <UserDialog>
                 {dialog.content}
               </UserDialog>
             </Slide>)
           else if (dialog.role === "assistant") return (
-            <Slide direction='right'>
+            <Slide direction='right' key={index}>
               <BootDialog>
                 {dialog.content}
                 <span onClick={() => handleCopyResponse(dialog.content)}>
@@ -101,10 +115,10 @@ const ChatScreen = () => {
             </span>
           )}
         </TypingTextArea>
-        <Checkbox>
-        Incluir datos Biodatos actuales en el mensaje
+        <Checkbox checked={checked} onChange={handleCheckboxChange}>
+          Incluir Biodatos actuales en el mensaje
         </Checkbox>
-        
+        {showError && <div style={{ color: 'red' }}>No se encontraron mediciones</div>}
       </TypingContainer>
     </ScreenContainer>
   );

@@ -128,7 +128,7 @@ export function Login() {
                   <Col span={24}>
                     <Button
                       type="primary"
-                      danger
+                      danger ghost
                       icon={<GoogleOutlined />}
                       onClick={handleGoogleSignIn}
                       block

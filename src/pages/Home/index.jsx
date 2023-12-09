@@ -17,7 +17,7 @@ const ScrollToTop = lazy(() => import("../../common/ScrollToTop"));
 
 const Home = () => {
   const { user,isLoading} = useAuth()
-  const {fbData} = useFirebaseData()
+  const {fbData,lastUpdated} = useFirebaseData()
 
 
   return (
@@ -33,6 +33,7 @@ const Home = () => {
         title={DashboardContent.title}
         content={DashboardContent.text}
         data={fbData}
+        timeUpdate={lastUpdated}
         id="dashboard"
         isLoading={isLoading}
       />

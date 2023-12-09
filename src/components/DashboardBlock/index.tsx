@@ -12,9 +12,10 @@ interface DashboardBlockProps {
   t: any;
   data:any
   isLoading:boolean
+  timeUpdate:string
 }
 
-const DashboardBlock = ({ title, content, id,t,data }: DashboardBlockProps) => {
+const DashboardBlock = ({ title, content, id,t,data,timeUpdate }: DashboardBlockProps) => {
 
   
   return (
@@ -25,6 +26,7 @@ const DashboardBlock = ({ title, content, id,t,data }: DashboardBlockProps) => {
             <Col lg={24} md={24} sm={24} xs={24}>
               <h6>{t(title)}</h6>
               <Content>{t(content)}</Content>
+              <>Ultima Actualización: {timeUpdate}</>
               <Slide direction="left">
                 <ChartCard iconIndex={0} value = {data.bpm || 0 } unit="BPM" min={40} max={100}/>
               </Slide>

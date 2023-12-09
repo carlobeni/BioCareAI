@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import { lazy, useEffect } from "react";
 import IntroContent from "../../content/IntroContent.json";
 import DeviceStep1Content from "../../content/DeviceStep1Content.json";
 import DeviceStep2Content from "../../content/DeviceStep2Content.json";
@@ -18,16 +18,15 @@ const ScrollToTop = lazy(() => import("../../common/ScrollToTop"));
 
 
 const Home = () => {
-  const { user, logOut, isLoading } = useAuth()
+  const { user, logOut} = useAuth()
   const handleLogOut = async () => {
     try {
       //throw new Error("test log out error")
       await logOut()
-    } catch (error:any) {
+    } catch (error) {
       console.log(error.message)
     }
   }
-  if (isLoading) return <h1>Loading...</h1>
 
   return (
     <Container>

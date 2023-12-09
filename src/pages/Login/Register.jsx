@@ -6,7 +6,8 @@ import { Input, Button, Form, Row, Col, Card, Layout } from "antd";
 import {
   UserOutlined,
   LockOutlined,
-  GoogleOutlined,
+  EyeOutlined,
+  EyeInvisibleOutlined,
 } from "@ant-design/icons";
 import { Slide } from "react-awesome-reveal";
 import { LogoContainer } from "../../components/Footer/styles";
@@ -14,43 +15,43 @@ import { SvgIcon } from "../../common/SvgIcon";
 
 const { Content } = Layout;
 
-export function Login() {
+export function Register() {
   const [user, setUser] = useState({
     email: "",
     password: "",
+    confirmPassword: "",
   });
-
-  const [firebaseError, setFirebaseError] = useState("");
-  const { isLoading, login, loginWithGoogle } = useAuth();
-  const navigate = useNavigate();
-
   const [form] = Form.useForm();
+  const [firebaseError, setFirebaseError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
+  const { signUp, isLoading } = useAuth();
+  const navigate = useNavigate();
 
   const handleChange = ({ target: { name, value } }) => {
     setUser({ ...user, [name]: value });
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setFirebaseError("");
+
+    if (user.password !== user.confirmPassword) {
+      setFirebaseError("Las contraseñas no coinciden.");
+      return;
+    }
+
     try {
-      await login(user.email, user.password);
+      await signUp(user.email, user.password);
       navigate("/");
     } catch (error) {
       setFirebaseError(error.message);
     }
   };
 
-  const handleGoogleSignIn = async () => {
-    try {
-      await loginWithGoogle();
-      navigate("/");
-    } catch (error) {
-      setFirebaseError(error.message);
-    }
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
   };
-
-  if (isLoading) {
-    return <h1>Loading...</h1>;
-  }
 
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
@@ -59,7 +60,7 @@ export function Login() {
   return (
     <Layout style={{ height: "100vh" }}>
       <Content style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <Slide direction="right">
+        <Slide direction="left">
           <Card style={{ width: "90vmin", borderRadius: "8px", boxShadow: "0 4px 8px rgba(0,0,0,0.1)" }}>
             <Row justify="center" align="middle">
               <LogoContainer to="/" aria-label="homepage">
@@ -84,8 +85,8 @@ export function Login() {
               >
                 <Input
                   prefix={<UserOutlined className="site-form-item-icon" />}
-                  name="email"
                   placeholder="Email"
+                  name="email"
                   onChange={handleChange}
                 />
               </Form.Item>
@@ -100,9 +101,26 @@ export function Login() {
               >
                 <Input.Password
                   prefix={<LockOutlined className="site-form-item-icon" />}
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="Contraseña"
+                  onChange={handleChange}
+                />
+              </Form.Item>
+              <Form.Item
+                name="confirmPassword"
+                rules={[
+                  {
+                    required: true,
+                    message: "Por favor confirme su contraseña",
+                  },
+                ]}
+              >
+                <Input.Password
+                  prefix={<LockOutlined className="site-form-item-icon" />}
+                  type={showPassword ? "text" : "password"}
+                  name="confirmPassword"
+                  placeholder="Confirmacion de contraseña"
                   onChange={handleChange}
                 />
               </Form.Item>
@@ -122,35 +140,16 @@ export function Login() {
                         margin: "4px 0",
                       }}
                     >
-                      Iniciar
+                      Registrar
                     </Button>
                   </Col>
-                  <Col span={24}>
-                    <Button
-                      type="primary"
-                      danger
-                      icon={<GoogleOutlined />}
-                      onClick={handleGoogleSignIn}
-                      block
-                      style={{
-                        borderRadius: "8px",
-                        margin: "4px 0",
-                      }}
-                    >
-                      Continuar con Google
-                    </Button>
-                  </Col>
+                  <Col span={24}></Col>
                 </Row>
               </Form.Item>
             </Form>
             <div>
               <label>
-                <Link to="/register">Crear una cuenta</Link>
-              </label>
-            </div>
-            <div>
-              <label style={{ color: "violet" }}>
-                <Link to="/resetpassword">Olvidaste tu Contraseña?</Link>
+                <Link to="/login">Ya tengo una cuenta</Link>
               </label>
             </div>
           </Card>
@@ -159,3 +158,4 @@ export function Login() {
     </Layout>
   );
 }
+

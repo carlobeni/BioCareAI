@@ -3,8 +3,6 @@ import { withTranslation } from "react-i18next";
 import { Slide } from "react-awesome-reveal";
 import { DashboardBlockSection, Content, ContentWrapper } from "./styles";
 import ChartCard from "../ChardCard";
-import { useEffect } from "react";
-
 
 interface DashboardBlockProps {
   title: string;
@@ -14,6 +12,7 @@ interface DashboardBlockProps {
 }
 
 const DashboardBlock = ({ title, content, id,t, }: DashboardBlockProps) => {
+  
   
   return (
     <DashboardBlockSection id={id}>

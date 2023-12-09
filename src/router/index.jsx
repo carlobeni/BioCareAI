@@ -15,12 +15,13 @@ const Router = () => {
   return (
     <Suspense fallback={null}>
       <Styles />
-      <Header />
       <AuthProvider>
       <Routes>
         <Route path="/" element={
           <ProtectedRoute>
+            <Header />
             <Home/>
+            <Footer />
           </ProtectedRoute>
         }/>
         <Route path="/login" element={<Login/>}/>
@@ -28,7 +29,6 @@ const Router = () => {
         <Route path="/resetpassword" element={<ResetPassword/>}/>
       </Routes>
     </AuthProvider>
-      <Footer />
     </Suspense>
   );
 };

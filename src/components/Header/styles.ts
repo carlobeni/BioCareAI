@@ -7,7 +7,8 @@ export const HeaderSection = styled.header`
   position: sticky;
   top: 0;
   z-index: 10;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 5%, rgba(0, 0, 0, 0) 100%);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
 
   .ant-row-space-between {
     align-items: center;

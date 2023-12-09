@@ -16,8 +16,6 @@ const RealtimeData = () => {
     if (user && !isLoading) {
       // Obtener referencia a la ubicación de la base de datos del usuario
       const databaseRef = ref(db,`/UsersData/${user.uid}`);
-      
-      // Escuchar cambios en los datos
       onValue(databaseRef,(snapshot) => {
         const data = snapshot.val();
         setTemperature(data.temperature);
@@ -25,6 +23,7 @@ const RealtimeData = () => {
         setBpm(data.bpm);
       });
     }
+    
   }, []);
 
   return (

@@ -29,5 +29,9 @@ export const IconContainer = styled("div")`
 export const Text = styled("span")`
   font-size: 20px; /* Aumenta el tamaño del texto */
 `;
+export const TextContainer = styled("div")`
+  font-size: 12px; /* Aumenta el tamaño del texto */
+  padding: 5px;
+`;
 
 // Resto de tu código...

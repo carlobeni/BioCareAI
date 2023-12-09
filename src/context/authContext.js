@@ -30,6 +30,8 @@ export function AuthProvider({children}){
             setIsLoading(false);
         })
     },[])
+
+
     //Out 
     const logOut = () =>signOut(auth)
     //Reset Password

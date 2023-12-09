@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Row, Col, Drawer } from "antd";
+import { Row, Col, Drawer, Button } from "antd";
 import { withTranslation } from "react-i18next";
 import Container from "../../common/Container";
 import { SvgIcon } from "../../common/SvgIcon";
+
 import {
   HeaderSection,
   LogoContainer,
@@ -14,8 +15,19 @@ import {
   Outline,
   Span,
 } from "./styles";
+import { useAuth } from "../../context/authContext";
+import { LoginOutlined} from '@ant-design/icons';
 
 const Header = ({ t }: any) => {
+  const { user, logOut} = useAuth()
+  const handleLogOut = async () => {
+    try {
+      //throw new Error("test log out error")
+      await logOut()
+    } catch (error:any) {
+      console.log(error.message)
+    }
+  }
   const [visible, setVisibility] = useState(false);
 
   const showDrawer = () => {
@@ -36,15 +48,17 @@ const Header = ({ t }: any) => {
     };
     return (
       <>
-        <CustomNavLinkSmall onClick={() => scrollTo("step1")}>
-          <Span>{t("Conectar Dispositivo")}</Span>
-        </CustomNavLinkSmall>
         <CustomNavLinkSmall onClick={() => scrollTo("dashboard")}>
           <Span>{t("Dashboard")}</Span>
         </CustomNavLinkSmall>
         <CustomNavLinkSmall onClick={() => scrollTo("chat")}>
           <Span>{t("Doctor Chat AI")}</Span>
         </CustomNavLinkSmall>
+        <Button type="primary" danger ghost 
+        onClick={handleLogOut}
+        icon={<LoginOutlined/>}>
+          Salir
+        </Button>
       </>
     );
   };

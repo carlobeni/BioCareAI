@@ -28,7 +28,7 @@ export function ResetPassword() {
   };
 
   const onFinish = (values) => {
-    console.log("Received values of form: ", values);
+    console.log("Received values of form");
   };
 
   const handleSubmit = async (event) => {

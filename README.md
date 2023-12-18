@@ -1,11 +1,10 @@
 # What's BioCareAI?
 
 BioCareAI 🌐👩‍⚕️ is a medical web tool that integrates biomedical data from ESP32 using Firebase's RealTimeDataBase. 📊💻 BioCareAI also features a custom chatbot, which uses OpenAI's GPT-3.5 with a medical focus, allowing users to interact in a unique way. 🤖👨‍⚕️
-#### [Click here (Demo)](https://biocareai.web.app)![image_2023-12-18_105528731](https://github.com/carlobeni/BioCareAI/assets/110142022/8fffa82e-c99c-48a6-bb4d-a3edf3f25f5f)
+#### [Click here (Demo)](https://biocareai.web.app)
 
+![image_2023-12-18_105528731](https://github.com/carlobeni/BioCareAI/assets/110142022/8fffa82e-c99c-48a6-bb4d-a3edf3f25f5f)
 ![image](https://github.com/carlobeni/BioCareAI/assets/110142022/0ed0054c-1105-42ad-89f6-ba7cbe28496e)
-
-![image_2023-12-18_105748802](https://github.com/carlobeni/BioCareAI/assets/110142022/db46660b-2387-4b6e-800e-5dd04cd159ab)
 
 # ESP Code
 
@@ -36,11 +35,7 @@ The `initWiFi` function connects the device to a WiFi network, and `initFirebase
 The `loop` function continuously updates sensor data and sends it to the Firebase database at regular intervals.
 
 
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
+## Available Scripts (ReactJS)
 
 In the project directory, you can run:
 

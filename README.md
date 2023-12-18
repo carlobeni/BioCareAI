@@ -10,7 +10,7 @@ BioCareAI 🌐👩‍⚕️ is a medical web tool that integrates biomedical dat
 
 In ESP_main.cpp you will find the complete code for the ESP32 or by clicking on [ESP32_main.cpp](https://github.com/carlobeni/BioCareAI/blob/master/ESP32_main.cpp)
 
-# Sensor Section
+## Sensor Section
 
 This section of the code is responsible for interfacing with the MAX30105 sensor to measure heart rate (BPM) and blood oxygen levels (SpO2).
 

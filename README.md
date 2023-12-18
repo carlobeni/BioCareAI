@@ -1,15 +1,17 @@
 # What's BioCareAI?
 
-Introducing BioCareAI! 🌐👩‍⚕️ It's an innovative medical tool that seamlessly integrates biomedical data from ESP32 using Firebase's RealTimeDataBase. 📊💻 Our website also features a personalized chatbot, utilizing OpenAI's GPT-3.5 with a medical focus, allowing users to interact in a unique and efficient way! 🤖👨‍⚕️ Experience the future of healthcare technology with BioCareAI!
+BioCareAI 🌐👩‍⚕️ is a medical web tool that integrates biomedical data from ESP32 using Firebase's RealTimeDataBase. 📊💻 BioCareAI also features a custom chatbot, which uses OpenAI's GPT-3.5 with a medical focus, allowing users to interact in a unique way. 🤖👨‍⚕️
 #### [Click here (Demo)](https://biocareai.web.app)![image_2023-12-18_105528731](https://github.com/carlobeni/BioCareAI/assets/110142022/8fffa82e-c99c-48a6-bb4d-a3edf3f25f5f)
 
-![image](https://github.com/carlobeni/BioCareAI/assets/110142022/0ed0054c-1105-42ad-89f6-ba7cbe28496e)# Demo
+![image](https://github.com/carlobeni/BioCareAI/assets/110142022/0ed0054c-1105-42ad-89f6-ba7cbe28496e)
 
 ![image_2023-12-18_105748802](https://github.com/carlobeni/BioCareAI/assets/110142022/db46660b-2387-4b6e-800e-5dd04cd159ab)
 
 # ESP Code
 
-## Sensor Section
+In ESP_main.cpp you will find the complete code for the ESP32 or by clicking on [ESP32_main.cpp](https://github.com/carlobeni/BioCareAI/blob/master/ESP32_main.cpp)
+
+### Sensor Section
 
 This section of the code is responsible for interfacing with the MAX30105 sensor to measure heart rate (BPM) and blood oxygen levels (SpO2).
 
@@ -17,19 +19,19 @@ This section of the code is responsible for interfacing with the MAX30105 sensor
 
 The `initSensor` function initializes the MAX30105 sensor with the required settings.
 
-### Update SpO2 and BPM
+#### Update SpO2 and BPM
 
 The `updateSpo2andBPM` function reads data from the sensor and updates the SpO2 and BPM values.
 
-## Web Section
+### Web Section
 
 In this section, the code handles communication with Firebase for data storage and retrieval.
 
-### Initialization
+#### Initialization
 
 The `initWiFi` function connects the device to a WiFi network, and `initFirebase` establishes a connection to the Firebase Realtime Database.
 
-### Sending Data to Firebase
+#### Sending Data to Firebase
 
 The `loop` function continuously updates sensor data and sends it to the Firebase database at regular intervals.
 

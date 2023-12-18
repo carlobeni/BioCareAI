@@ -79,7 +79,7 @@ const Footer = ({ t }: any) => {
             </NavLink>
             <FooterContainer>
               <SocialLink
-                href="https://github.com/carlobeni?tab=repositories"
+                href="https://github.com/carlobeni/BioCareAI"
                 src="github.svg"
               />
             </FooterContainer>

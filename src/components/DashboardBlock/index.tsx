@@ -28,13 +28,13 @@ const DashboardBlock = ({ title, content, id,t,data,timeUpdate }: DashboardBlock
               <Content>{t(content)}</Content>
               <>Ultima Actualización: {timeUpdate}</>
               <Slide direction="left">
-                <ChartCard iconIndex={0} value = {data.bpm || 0 } unit="BPM" min={40} max={100}/>
+                <ChartCard iconIndex={0} value = {data.bpm || 0 } unit="BPM" min={40} max={180}/>
               </Slide>
               <Slide direction="right">
                 <ChartCard iconIndex={1} value = {data.spo2 || 0} unit="% SpO2" min={95} max={100}/>
               </Slide>
               <Slide direction="left">
-                <ChartCard iconIndex={2} value = {data.temperature || 0} unit="°C" min={35} max={37}/>
+                <ChartCard iconIndex={2} value = {data.temperature} unit="°C" min={30} max={41}/>
               </Slide>
               <></>
             </Col>

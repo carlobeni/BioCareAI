@@ -1,4 +1,4 @@
-const OPENAI_API_KEY = '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';
+const OPENAI_API_KEY = 'aaaa';
 const URL = 'https://api.openai.com/v1/chat/completions';
 
 export async function OpenAiDialog(conversation) {

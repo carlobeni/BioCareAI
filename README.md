@@ -10,7 +10,7 @@ BioCareAI 🌐👩‍⚕️ is a medical web tool that integrates biomedical dat
 
 In ESP_main.cpp you will find the complete code for the ESP32 or by clicking on [ESP32_main.cpp](https://github.com/carlobeni/BioCareAI/blob/master/ESP32_main.cpp)
 
-### Sensor Section
+# Sensor Section
 
 This section of the code is responsible for interfacing with the MAX30105 sensor to measure heart rate (BPM) and blood oxygen levels (SpO2).
 
@@ -18,19 +18,19 @@ This section of the code is responsible for interfacing with the MAX30105 sensor
 
 The `initSensor` function initializes the MAX30105 sensor with the required settings.
 
-#### Update SpO2 and BPM
+### Update SpO2 and BPM
 
 The `updateSpo2andBPM` function reads data from the sensor and updates the SpO2 and BPM values.
 
-### Web Section
+## Web Section
 
 In this section, the code handles communication with Firebase for data storage and retrieval.
 
-#### Initialization
+### Initialization
 
 The `initWiFi` function connects the device to a WiFi network, and `initFirebase` establishes a connection to the Firebase Realtime Database.
 
-#### Sending Data to Firebase
+### Sending Data to Firebase
 
 The `loop` function continuously updates sensor data and sends it to the Firebase database at regular intervals.
 
